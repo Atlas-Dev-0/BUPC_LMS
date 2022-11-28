@@ -25,11 +25,14 @@ int number_of_lines = 0;
 void menu();
 void addstudent();
 void studentList();
+void addheader();
 
 
 
 //MainFrame
-
+void addfileandheader() { 
+    
+}
 void menu() {
     system("cls");
     cout << "\t\t\t-----WELCOME TO BUPC LIBRARY MANAGEMENT SYSTEM-----\n";
@@ -72,13 +75,13 @@ void addstudent() {
     cin >> choice;
     
     if(choice == 1) {
-        year_level = "1st Year";
+        year_level = "1st_Year";
     } else if(choice == 2) {
-        year_level = "2nd Year";
+        year_level = "2nd_Year";
     } else if(choice == 3) {
-        year_level = "3rd Year";
+        year_level = "3rd_Year";
     } else if(choice == 4) {
-        year_level = "4th Year";
+        year_level = "4th_Year";
     } else {
         cout << "No option, try again";
         addstudent();
@@ -127,16 +130,23 @@ void addstudent() {
     time(&now);
     char* dt = ctime(&now);
 
+    
     ofstream swb("borrowedbookstry.data", ios::app);
+    ifstream myfile("borrowedbookstry.data");
+    string firstline;
+    getline(myfile,firstline);
+    if(firstline == "") {
+        swb << "STUDENT WITH BORROWED BOOK LIST\n";
+    } 
     swb << firstname << " " << lastname 
     << " " << id << " " << year_level 
     << " " << Book_category <<  " " 
     << Bookname << " " << Author << " " << dt;
     cout << "--------STUDENT ADDED TO DATABASE----------\n";
-    swb.close();
-
     system("pause");
+    swb.close();
     menu();
+    
 
 };
 
@@ -144,7 +154,6 @@ void getsizeandline();
 
 void studentList() {
     system("cls");
-
     if (line23.size() <= 0 && number_of_lines == 0) {
         getsizeandline();
     } else { 
@@ -166,24 +175,29 @@ void studentList() {
 
 void getsizeandline() {
     system("cls");
-    string firstname, lastname, id, yearlevel,bookcategory, bookname, bookauthor, dt;
+    string firstname, lastname, id, yearlevel,bookcategory, bookname, bookauthor, day, month, date, time, year;
     string line;
     string output;
     ifstream myfile("borrowedbookstry.data");
     if(myfile.is_open()){
         while(!myfile.eof()){
             getline(myfile,line);
-            myfile >> firstname >> lastname >> id >> yearlevel >> bookcategory >> bookname >> bookauthor  >> dt;
+            myfile >> firstname >> lastname >> id >> yearlevel >> bookcategory >> bookname >> bookauthor  >> day >> month >> date >> time >> year;
             output = "Name: " + firstname + " " + lastname
             + " | ID: " + id 
             + " | Year Level: " + yearlevel
             + " | Book Category: " + bookcategory 
             + " | Book Author: " + bookauthor
-            + " | Date of borrow: " + dt;
+            + " | Date of borrow: " + day + " "
+            + month + " " + date + " " + time + " " + year;
             line23.push_back(output);
             number_of_lines++;
         }
         myfile.close();
+    } else {
+        cout << "\nDATABASE EMPTY\n";
+        system("pause");
+        menu();
     }
     studentList();
 }
