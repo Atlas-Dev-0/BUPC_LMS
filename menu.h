@@ -20,14 +20,11 @@ string Author;
 vector<string> line23;
 int number_of_lines = 0;
 
-
-
+void getsizeandline();
 void menu();
 void addstudent();
 void studentList();
 void addheader();
-
-
 
 //MainFrame
 void addfileandheader() { 
@@ -138,7 +135,7 @@ void addstudent() {
     if(firstline == "") {
         swb << "STUDENT WITH BORROWED BOOK LIST\n";
     } 
-    swb << firstname << " " << lastname 
+    swb << firstname << " " << lastname     
     << " " << id << " " << year_level 
     << " " << Book_category <<  " " 
     << Bookname << " " << Author << " " << dt;
@@ -150,24 +147,22 @@ void addstudent() {
 
 };
 
-void getsizeandline();
 
 void studentList() {
     system("cls");
     if (line23.size() <= 0 && number_of_lines == 0) {
         getsizeandline();
     } else { 
-        cout << "\n\t\t\t--------------STUDENT LIST------------------\n";
-        cout << "";
+        cout << "\n\t\t\t\t\t\t\t--------------STUDENT LIST------------------\n";
+        cout << "\n";
 
             for (int i = 0; i < number_of_lines-1; i++) {
                 cout << line23.at(i) << endl;
-                cout << "------------------------------------------------------------------------------\n";
+                cout << "\n";
             } 
-
-        cout << "finished\n";
-        system("pause");
-        menu();
+        cout << " \n\n\n";
+        cout << "[1] SORT BY LASTNAME \t\t [2] SORT BY DATE AND TIME \t\t [3] SORT BY MONTH \n";
+        cout << "Sort by: "; cin >> choice;
     }
     
     
