@@ -196,6 +196,7 @@ void getsizeandline() {
             + " | ID: " + id 
             + " | Year Level: " + yearlevel
             + " | Book Category: " + bookcategory 
+            + " | Book Name: " + bookname 
             + " | Book Author: " + bookauthor
             + " | Date of borrow: " + day + " "
             + month + " " + date + " " + time + " " + year;
