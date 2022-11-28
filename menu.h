@@ -166,12 +166,7 @@ void studentList() {
         cout << " \n\n\n";
         cout << "[1] SORT BY LASTNAME \t\t [2] SORT BY DATE AND TIME \t\t [3] SORT BY MONTH \n";
         cout << "Sort by: "; cin >> choice;
-        if(choice == 1) {
-            sortbylastname();
-        } else {
-            cout << "no such option";
-            studentList();
-        }
+        
     }
 }
 
