@@ -11,7 +11,7 @@ void forgot();
 int option;
 
 void logindialogue() {
-
+		//login dialouge 
         system("cls");
         cout << "\t\t\t_________________________________________\n";
         cout << "\t\t\tWELCOME TO BUPC LIBRARY MANAGEMENT SYSTEM\n";

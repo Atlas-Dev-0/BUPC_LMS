@@ -25,10 +25,10 @@ int number_of_lines = 0;
 void menu();
 void addstudent();
 void studentList();
-void booklist();
-void RecommendedBooks();
 
 
+
+//MainFrame
 
 void menu() {
     system("cls");
@@ -189,5 +189,4 @@ void getsizeandline() {
 }
 
 
-void booklist() {}
-void RecommendedBooks() {}
+
