@@ -64,7 +64,7 @@ void login()
 	cout << "\t\t\t PASSWORD: ";
 	cin >> password;
 
-	ifstream input("records.md");
+	ifstream input("AccountData.data");
 	while (input >> user >> registeredid >> pass)
 	{
 		if (user == userID && registeredid == inputid && pass == password)
@@ -100,7 +100,7 @@ void registration()
 	cout << "\t\t\t Re-type the password : ";
 	cin >> rpass;
         if (rpass == rpassword) {
-            ofstream f1("records.md", ios::app);
+            ofstream f1("AccountData.data", ios::app);
             f1 << rusername << ' ' << ruserid << ' ' << rpassword << endl;
             system("cls");
             cout << "\n\t\t\t Registration is successfull! \n";
@@ -136,7 +136,7 @@ void forgot()
 			cout << "\n\t\t\t Enter the authentication ID which you remembered: ";
 			cin >> sudo_id;
 
-			ifstream f2("records.md");
+			ifstream f2("AccountData.data");
 			while (f2 >> username >> registered_id >> spass)
 			{
 				if (registered_id == sudo_id)
