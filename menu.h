@@ -131,8 +131,8 @@ void addstudent() {
     char* dt = ctime(&now);
 
     
-    ofstream swb("borrowedbookstry.data", ios::app);
-    ifstream myfile("borrowedbookstry.data");
+    ofstream swb("borrowedbooks.data", ios::app);
+    ifstream myfile("borrowedbooks.data");
     string firstline;
     getline(myfile,firstline);
     if(firstline == "") {
@@ -178,7 +178,7 @@ void getsizeandline() {
     string firstname, lastname, id, yearlevel,bookcategory, bookname, bookauthor, day, month, date, time, year;
     string line;
     string output;
-    ifstream myfile("borrowedbookstry.data");
+    ifstream myfile("borrowedbooks.data");
     if(myfile.is_open()){
         while(!myfile.eof()){
             getline(myfile,line);
