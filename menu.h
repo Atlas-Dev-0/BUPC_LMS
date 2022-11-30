@@ -152,6 +152,7 @@ void addstudent() {
 
 
 void studentList() {
+    ifstream myfile("borrowedbooks.data");
     system("cls");
     if (line23.size() <= 0 && number_of_lines == 0) {
         getsizeandline();
@@ -166,6 +167,7 @@ void studentList() {
         cout << " \n\n\n";
         cout << "[1] SORT BY LASTNAME \t\t [2] SORT BY DATE AND TIME \t\t [3] SORT BY MONTH \t\t [4] EXIT \n ";
         cout << "Sort by: "; cin >> choice;
+        myfile.close();
         switch (choice)
         {
             case 1:
@@ -175,7 +177,7 @@ void studentList() {
                 }
             case 2:
                 {
-                    sortbydateandtime();
+                    sortbydateandday();
                     break;
                 }
             case 3:
@@ -208,7 +210,7 @@ void sortbylastname() {
 }
 
 
-void sortbydateandtime(){
+void sortbydateandday(){
 }
 
 
