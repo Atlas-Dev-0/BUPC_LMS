@@ -1,62 +1,63 @@
+// C++ program for the above approach
 #include <bits/stdc++.h>
-#include <string.h>
 using namespace std;
-#define MAX_LEN 100
  
-// Sorts an array of strings where length of every
-// string should be smaller than MAX_LEN
-void selectionSort(char arr[][MAX_LEN], int n)
+// Comparator Function
+bool myCmp(string s1, string s2)
 {
-    int i, j, min_idx;
  
-    // One by one move boundary of unsorted subarray
-    char minStr[MAX_LEN];
-    for (i = 0; i < n-1; i++)
-    {
-        // Find the minimum element in unsorted array
-        int min_idx = i;
-        strcpy(minStr, arr[i]);
-        for (j = i + 1; j < n; j++)
-        {
-            // If min is greater than arr[j]
-            if (strcmp(minStr, arr[j]) > 0)
-            {
-                // Make arr[j] as minStr and update min_idx
-                strcpy(minStr, arr[j]);
-                min_idx = j;
-            }
-        }
+    // If size of numeric strings
+    // are same the put lowest value
+    // first
+    if (s1.size() == s2.size()) {
+        return s1 < s2;
+    }
  
-        // Swap the found minimum element with the first element
-        if (min_idx != i)
-        {
-            char temp[MAX_LEN];
-            strcpy(temp, arr[i]); //swap item[pos] and item[i]
-            strcpy(arr[i], arr[min_idx]);
-            strcpy(arr[min_idx], temp);
-        }
+    // If size is not same put the
+    // numeric string with less
+    // number of digits first
+    else {
+        return s1.size() < s2.size();
     }
 }
  
-// Driver code
+// Driver Code
 int main()
 {
-    char arr[][MAX_LEN] = {"GeeksforGeeks", "Practice.GeeksforGeeks",
-                                                    "GeeksQuiz"};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    int i;
+    vector<string> v;
+    int number_of_lines = 0;
+    string output, line, firstname, lastname;
+    ifstream myfile("prototypedatabase.data");
+    if(myfile.is_open()) {  
+        while(!myfile.eof()){
+            myfile >> firstname;
+            output = firstname; 
+            v.push_back(output);
+            number_of_lines++;
+        }
+        myfile.close();
+    } else {
+        cout << "\nDATABASE EMPTY\n";
+        system("pause");
+    }
+    
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << "\n";
+    }
+
+    cout << "--------------------------\n";
+    // Calling sort function with
+    // custom comparator
+
+
+    sort(v.begin(), v.end(), myCmp);
  
-    cout<<"Given array is\n";
-    for (i = 0; i < n; i++)
-        cout << i << ": " << arr[i] << endl;
+    // Print the vector values after
+    // sorting
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << "\n";
+    }
+
+
  
-    selectionSort(arr, n);
- 
-    cout << "\nSorted array is\n";
-    for (i = 0; i < n; i++)
-        cout << i << ": " << arr[i] << endl;
- 
-    return 0;
 }
- 
-// This is code is contributed by rathbhupendra
