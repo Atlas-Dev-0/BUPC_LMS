@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include <fstream>
 #include <string>
 #include <ctime>
@@ -131,20 +131,20 @@ void addstudent() {
     char* dt = ctime(&now);
 
     
-    ofstream swb("borrowedbooks.data", ios::app);
+    ofstream borrowedbook_database("borrowedbooks.data", ios::app);
     ifstream myfile("borrowedbooks.data");
     string firstline;
     getline(myfile,firstline);
     if(firstline == "") {
-        swb << "STUDENT WITH BORROWED BOOK LIST\n";
+        borrowedbook_database << "STUDENT WITH BORROWED BOOK LIST\n";
     } 
-    swb << firstname << " " << lastname     
+    borrowedbook_database << firstname << " " << lastname     
     << " " << id << " " << year_level 
     << " " << Book_category <<  " " 
     << Bookname << " " << Author << " " << dt;
     cout << "--------STUDENT ADDED TO DATABASE----------\n";
     system("pause");
-    swb.close();
+    borrowedbook_database.close();
     menu();
     
 
@@ -204,18 +204,18 @@ void studentList() {
 }
 
 
-
 void sortbylastname() {
-    system("cls");
-    string firstname, lastname, id, yearlevel,bookcategory, bookname, bookauthor, day, month, date, time, year;
-    sort(lastname.begin(), lastname.end(), [](firstname a, firstname b), [](id a, id b), [](yearlevel a, yearlevel b), [](bookcategory a, bookcategory b);
-         [](bookname a, bookname b), [](bookauthor a, bookauthor b), [](day a, day b), [](month a, month b),[](date a, date b);
-         [](time a, time b), [](year a, year b){return a.lastname < b.lastname});
 }
+
+
 void sortbydateandtime(){
 }
+
+
 void sortbymonth(){
 }
+
+
 void getsizeandline() {
     system("cls");
     string firstname, lastname, id, yearlevel,bookcategory, bookname, bookauthor, day, month, date, time, year;
