@@ -76,7 +76,7 @@ void login()
 	input.close();
 	if (count == 1)
 	{
-		cout << userID << "\n\t\t\tYour LOGIN is successfull! \n";
+		cout <<"\n\t\t\t"<<userID << " Your LOGIN is successfull! \n";
 		system("pause");
 		menu();
 	}
@@ -107,7 +107,7 @@ void registration()
             system("pause");
             logindialogue();
         } else if (rpass!=rpassword) {
-            cout << "Enter the Same password\n";
+            cout << "\t\t\tEnter the same password\n";
             system("pause");
             registration();
         } else {
