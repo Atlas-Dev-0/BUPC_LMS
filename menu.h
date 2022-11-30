@@ -166,22 +166,56 @@ void studentList() {
         cout << " \n\n\n";
         cout << "[1] SORT BY LASTNAME \t\t [2] SORT BY DATE AND TIME \t\t [3] SORT BY MONTH \t\t [4] EXIT \n ";
         cout << "Sort by: "; cin >> choice;
-        if(choice == 4) {
+        switch (choice)
+        {
+            case 1:
+                {
+                     sortbylastname();
+                    break;
+                }
+            case 2:
+                {
+                    sortbydateandtime();
+                    break;
+                }
+            case 3:
+                {
+                    sortbymonth();
+                    break;
+                }
+            case 4:
+                {
+                    menu();
+                    break;
+                }
+            default:
+                {
+                    cout<<"no such option";
+                    studentList();
+                }
+        }
+        /*if(choice == 4) {
             menu();
         } else {
             cout << "no such option";
             studentList();
-        }
+        }*/
     }
 }
 
 
 
 void sortbylastname() {
-    
-
+    system("cls");
+    string firstname, lastname, id, yearlevel,bookcategory, bookname, bookauthor, day, month, date, time, year;
+    sort(lastname.begin(), lastname.end(), [](firstname a, firstname b), [](id a, id b), [](yearlevel a, yearlevel b), [](bookcategory a, bookcategory b);
+         [](bookname a, bookname b), [](bookauthor a, bookauthor b), [](day a, day b), [](month a, month b),[](date a, date b);
+         [](time a, time b), [](year a, year b){return a.lastname < b.lastname});
 }
-
+void sortbydateandtime(){
+}
+void sortbymonth(){
+}
 void getsizeandline() {
     system("cls");
     string firstname, lastname, id, yearlevel,bookcategory, bookname, bookauthor, day, month, date, time, year;
