@@ -11,12 +11,15 @@ using namespace std;
 void Clear_screen();
 void Clear_screen() {system("cls");}
 void Add_Student();
-void Insert_Data_to_Database();
 
 int User_Input_choice;
 class Input_student_with_book_data 
 {
     public:
+        int    Month;
+        int    Day;
+        int    Month_Deadline;
+        int    Day_Deadline;
         string Student_firstname;
         string Student_lastname;
         string Student_ID;
@@ -26,14 +29,17 @@ class Input_student_with_book_data
         string Borrowed_BookName;
         string Borrowed_BookAuthor;
         string Borrowed_BookDate;
-        string Date_Borrowed;
-        string Deadline;
-        void Get_Date_of_Borrow();
-        void Get_Date_of_Deadline();
+        string Month_in_LetterForm(int Numerical_form_of_month) 
+        {
+            string Months[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"};
+            return Months[Numerical_form_of_month-1];
+        }
         void Get_Student_Name();
+        void Insert_Data_to_Database();
         void Get_Student_Yearlevel();   
         void Get_Student_Course();
         void Get_BookCategory();
+        void Get_Date_and_Deadline_of_Borrow();
         void Get_Book();
         void Check_if_Information_is_right();
 };
@@ -49,8 +55,6 @@ void Add_Student()
     BorrowedBook_data.Get_Student_Course();   
     Clear_screen();
     BorrowedBook_data.Get_Book();   
-    Clear_screen();
-    BorrowedBook_data.Check_if_Information_is_right();  
 }
 
 
@@ -175,7 +179,7 @@ void Input_student_with_book_data::Get_Book()
             Borrowed_BookName = Book_Name_from_Database;
             Borrowed_BookAuthor = Book_Author_from_Database;
             Borrowed_BookDate = Book_Date_from_Database; 
-            Input_student_with_book_data::Check_if_Information_is_right();  
+            Input_student_with_book_data::Get_Date_and_Deadline_of_Borrow();   
         } 
     }
 
@@ -193,14 +197,17 @@ void Input_student_with_book_data::Check_if_Information_is_right() {
     cout << "Book Name: " << Borrowed_BookName << endl;
     cout << "Book Author: " << Borrowed_BookAuthor << endl;
     cout << "Book Date: " << Borrowed_BookDate << endl;
+    cout << "Date of Borrow: " <<  Month_in_LetterForm(Month) << ". " << Day << endl;
+    cout << "Deadline: " << Month_in_LetterForm(Month_Deadline) << ". " << Day_Deadline   << endl;
+
 
     string User_Input_choice_string;
-    cout << "Are the Details right? (Y/n): "; cin >> User_Input_choice_string;
+    cout << "Are the Details right? (Y/n): "; 
+    cin >> User_Input_choice_string;
     
-    if (User_Input_choice_string == "Y" && User_Input_choice_string == "y") 
+    if (User_Input_choice_string == "Y") 
     {
-        Insert_Data_to_Database();
-
+        Input_student_with_book_data::Insert_Data_to_Database();
     } 
     else 
     {
@@ -209,16 +216,39 @@ void Input_student_with_book_data::Check_if_Information_is_right() {
 }
 
 
-void Get_Date_of_Borrow() {
-    
+void Input_student_with_book_data::Get_Date_and_Deadline_of_Borrow() 
+{
+    Clear_screen();
+    cout << "Enter The Date and Deadline of Borrow" << endl;
+    cout << "--------------------DAY TODAY--------------------" << endl;
+    cout << "Enter the Month: "; 
+    cin >> Month;
+    cout << "Enter Day: "; 
+    cin >> Day;
+    cout << "--------------------DEADLINE--------------------" << endl;
+    cout << "Enter the Month: "; 
+    cin >> Month_Deadline;
+    cout << "Enter Day: "; 
+    cin >> Day_Deadline;
+    Input_student_with_book_data::Check_if_Information_is_right();
 }
 
-void Insert_Data_to_Database() 
-{
 
 
+void Input_student_with_book_data::Insert_Data_to_Database() 
+{   
+    ofstream borrowedbook_database("borrowedbooks.data", ios::app);
+    ifstream myfile("borrowedbooks.data");
+    string firstline;
+    getline(myfile,firstline);
+    borrowedbook_database << Student_firstname << " " << Student_lastname     
+    << " " << Student_ID << " " << Student_YearLevel 
+    << " " << Borrowed_BookCategory <<  " " 
+    << Borrowed_BookName << " " << Borrowed_BookAuthor << " " << Month_in_LetterForm(Month) << " " << Day << " " <<  Month_in_LetterForm(Month_Deadline) << " " << Day_Deadline;
+    cout << "--------STUDENT ADDED TO DATABASE----------\n";
+    borrowedbook_database.close();
+    system("pause");
 
-    
 }
 
 
