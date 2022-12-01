@@ -6,10 +6,12 @@ using namespace std;
 
 //LMS MAIN c++ file
 
-int main() {
+int main() 
+{
+
         system("cls");
-        //This calls the logindialogue from loginform.h
         logindialogue();
+
 }
 
 
