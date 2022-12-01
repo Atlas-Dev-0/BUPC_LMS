@@ -30,7 +30,7 @@ int main()
     ifstream myfile("prototypedatabase.data");
     if(myfile.is_open()) {  
         while(!myfile.eof()){
-            myfile >> firstname;
+            myfile >> firstname >> lastname;
             output = firstname; 
             v.push_back(output);
             number_of_lines++;
