@@ -79,16 +79,16 @@ void Input_student_with_book_data::Get_Student_Yearlevel()
     switch (User_Input_choice)
     {
     case 1:
-        Student_YearLevel = "1st Year";
+        Student_YearLevel = "1st_Year";
         break;
     case 2:
-        Student_YearLevel = "2nd Year";
+        Student_YearLevel = "2nd_Year";
         break;
     case 3:
-        Student_YearLevel = "3rd Year";
+        Student_YearLevel = "3rd_Year";
         break;
     case 4:
-        Student_YearLevel = "4th Year";
+        Student_YearLevel = "4th_Year";
         break;
     default:
         cout << "NO OPTION, TRY AGAIN\n";
@@ -244,11 +244,10 @@ void Input_student_with_book_data::Insert_Data_to_Database()
     borrowedbook_database << Student_firstname << " " << Student_lastname     
     << " " << Student_ID << " " << Student_YearLevel 
     << " " << Borrowed_BookCategory <<  " " 
-    << Borrowed_BookName << " " << Borrowed_BookAuthor << " " << Month_in_LetterForm(Month) << " " << Day << " " <<  Month_in_LetterForm(Month_Deadline) << " " << Day_Deadline;
+    << Borrowed_BookName << " " << Borrowed_BookAuthor << " " << Month_in_LetterForm(Month) << "_" << Day << " " <<  Month_in_LetterForm(Month_Deadline) << "_" << Day_Deadline << endl;
     cout << "--------STUDENT ADDED TO DATABASE----------\n";
     borrowedbook_database.close();
     system("pause");
-
 }
 
 

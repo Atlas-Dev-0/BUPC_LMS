@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 #include <windows.h>
 #include "Book_Transaction.h"
-#include "Book_List.h"
 #include "RegistrationForm.h"
-
+#include "List_Students_Function.h"
 using namespace std;
 
 void LOGIN_DIALOUGE();
 void Menu(); 
+
 int User_Option;
 
 class Login_class {
@@ -17,9 +17,10 @@ class Login_class {
                 void Is_Login_Successful();
 };
 
+
 void Login_class::Login()
 {
-	system("cls");
+	Clear_screen();
 	cout << "\t\t\t Please enter the usernane and password: " << endl;
 	cout << "\t\t\t USERNAME: ";
 	cin >> UserID;
@@ -34,7 +35,7 @@ void Login_class::Login()
 		if (User == UserID && Registeredid == Inputid && Pass == Password)
 		{       
 			Is_Login_Successful();
-			system("cls");
+			Clear_screen();
 		}
                 else
 	        {
@@ -61,7 +62,7 @@ void Menu()
 {
         while (true)
         {
-        system("cls");
+        Clear_screen();
         cout << "\t\t\t-----WELCOME TO BUPC LIBRARY MANAGEMENT SYSTEM-----\n";
         cout << "\t\t\t\t[1] Add a borrow Book\n";
         cout << "\t\t\t\t[2] List of Students\n"; 
@@ -76,6 +77,8 @@ void Menu()
                 Add_Student();
                 break;
         case 2:
+                ListStudents();
+                break;
         case 3:
         case 4:
         case 5:
@@ -93,7 +96,7 @@ void LOGIN_DIALOUGE()
         Login_class Login_form_class;
         Registration_Form Registration_Form_class;
         while(true) {
-        system("cls");
+        Clear_screen();
         cout << "\t\t\t_________________________________________\n";
         cout << "\t\t\tWELCOME TO BUPC LIBRARY MANAGEMENT SYSTEM\n";
         cout << "\t\t\t______________      Menu       __________\n\n\n";
@@ -132,13 +135,9 @@ void LOGIN_DIALOUGE()
         }
 }
 
-
-
-
-
 int main()      
 {       
-        system("cls");
+        Clear_screen();
         LOGIN_DIALOUGE();
         return 0;
         
