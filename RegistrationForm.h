@@ -1,8 +1,11 @@
+#pragma once
 #include <bits/stdc++.h>
 #include <fstream>
 #include <windows.h>
-
+#include "Console_Integrated_Sounds.h"
+#include "Console_Coloring_Header.h"
 using namespace std;
+
 
 class Registration_Form 
 {
@@ -13,34 +16,65 @@ class Registration_Form
 };
 
 
+
+
 void Registration_Form::Registration()
 {
-	string rusername, rpassword, ruserid, rpass;
-	system("cls");
-	cout << "\t\t\t Enter the username : ";
-	cin >> rusername;
-	cout << "\t\t\t Enter the authentication ID : ";
-	cin >> ruserid;
-	cout << "\t\t\t Enter the password : ";
-	cin >> rpassword;
-	cout << "\t\t\t Re-type the password : ";
-	cin >> rpass;
-        if (rpass == rpassword) {
-            ofstream f1("AccountData.data", ios::app);
-            f1 << rusername << ' ' << ruserid << ' ' << rpassword << endl;
-            system("cls");
-            cout << "\n\t\t\t Registration is successfull! \n";
-            system("pause");
-        } else if (rpass!=rpassword) {
-            cout << "\t\t\tEnter the same password\n";
-            system("pause");
-            Registration();
-        } else {
-            Registration();
-        }
+	string Input_from_user;
+	vector<string> Input_Vector;
+	for (int counter = 0; counter <= 4; counter++)
+	{
+		system("cls");
+		print("\t\t\t HELLO USER! PLEASE INPUT THE INFORMATION ASKED!", color_black, color_blue);
+		cout << "\n\n";
+		cout << "\t\t\t Enter the username : ";
+		cin >> Input_from_user;
+		if (Input_from_user == "exit") {
+			break;
+		}
+		Input_Vector.push_back(Input_from_user);
 
-	
+		cout << "\t\t\t Enter the authentication ID : ";
+		cin >> Input_from_user;
+		if (Input_from_user == "exit") {
+			break;
+		}
+		Input_Vector.push_back(Input_from_user);
+
+		cout << "\t\t\t Enter the password : ";
+		cin >> Input_from_user;
+		if (Input_from_user == "exit") {
+			break;
+		}
+		Input_Vector.push_back(Input_from_user);
+
+		cout << "\t\t\t Re-type the password : ";
+		cin >> Input_from_user;
+		if (Input_from_user == "exit") {
+			break;
+		}
+		Input_Vector.push_back(Input_from_user);
+
+			if (Input_Vector[3] == Input_Vector[2]) {
+				ofstream f1("AccountData.data", ios::app);
+				f1 << Input_Vector[0] << ' ' << Input_Vector[1] << ' ' << Input_Vector[2] << endl;
+				GOODSOUND();
+				print("\n\t\t\t Registration is successful!!", color_black, color_green);
+				cout << "\n\t\t\t"; system("pause");
+				break;
+			} else if (Input_Vector[3]!=Input_Vector[2]) {
+				FAILSOUND();
+				print("\n\t\t\t Enter the SAME PASSWORD!!", color_black, color_red);
+				cout << "\n\t\t\t"; system("pause");
+				break;
+			} else {
+
+			}
+  }
 }
+
+
+
 
 
 void Registration_Form::Forgot_Passwd()
@@ -93,6 +127,4 @@ void Registration_Form::Forgot_Passwd()
 			Forgot_Passwd();
 	}
 
-	
 }
-

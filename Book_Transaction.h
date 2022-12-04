@@ -202,7 +202,7 @@ void Input_student_with_book_data::Check_if_Information_is_right() {
 
 
     string User_Input_choice_string;
-    cout << "Are the Details right? (Y/n): "; 
+    cout << "\n\nAre the Details right? (Y/n): "; 
     cin >> User_Input_choice_string;
     
     if (User_Input_choice_string == "Y") 
@@ -245,7 +245,7 @@ void Input_student_with_book_data::Insert_Data_to_Database()
     << " " << Student_ID << " " << Student_YearLevel 
     << " " << Borrowed_BookCategory <<  " " 
     << Borrowed_BookName << " " << Borrowed_BookAuthor << " " << Month_in_LetterForm(Month) << "_" << Day << " " <<  Month_in_LetterForm(Month_Deadline) << "_" << Day_Deadline << endl;
-    cout << "--------STUDENT ADDED TO DATABASE----------\n";
+    cout << "\n--------STUDENT ADDED TO DATABASE----------\n";
     borrowedbook_database.close();
     system("pause");
 }

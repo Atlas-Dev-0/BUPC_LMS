@@ -1,3 +1,4 @@
+#pragma once
 #include <bits/stdc++.h>
 #include <fstream>
 #include <sstream>
@@ -5,10 +6,12 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include "Console_Coloring_Header.h"
 using namespace std;
 
 void Clr_scrn();
 void Clr_scrn() {system("cls");}
+
 
 class BorrowedBook_Information
 {
@@ -84,8 +87,8 @@ void ListStudents()
 
     for (BorrowedBook_Information i : BorrowedBook_Database) 
     {
-        cout << "STUDENT: " << i.Student_LastName << ", " 
-        << i.Student_FirstName << "\n | ID: " << i.Student_ID << "\n | Year Level: " << i.Student_YearLevel 
+        print("STUDENT: " + i.Student_LastName + ", " + i.Student_FirstName, color_black, color_blue); 
+        cout << "\n | ID: " << i.Student_ID << "\n | Year Level: " << i.Student_YearLevel 
         << "\n | Book Name: " << i.Bookname << "\n | Book Author: " << i.BookAuthor << "\n | Date of Borrow: " << i.Book_Date_of_Borrow << "\n | Deadline: " << i.Book_Deadline_of_Borrow << "\n" << endl;
     }
 
