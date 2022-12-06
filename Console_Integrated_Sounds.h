@@ -13,7 +13,7 @@ void FAILSOUND() {
     Beep(750,600);
 }
 void GOODSOUND() {
-        Beep(600,600);
+        Beep(750,600);
 }
 void CONFIRMSOUND() {
         Beep(600,600);

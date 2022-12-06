@@ -33,6 +33,7 @@ class Input_student_with_book_data
         string Borrowed_BookAuthor;
         string Borrowed_BookDate;
         string Line_from_data;
+        string Temp_Book_Pointer;
         string Month_in_LetterForm(int Numerical_form_of_month) 
         {
             string Months[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"};
@@ -46,7 +47,14 @@ class Input_student_with_book_data
         void Get_Date_and_Deadline_of_Borrow();
         void Get_Book();
         void Check_if_Information_is_right();
+        void get_book_data_from_list();
 };
+
+int main() 
+{
+    Add_Student();
+}
+
 
 void Add_Student() 
 {   
@@ -94,7 +102,7 @@ void Input_student_with_book_data::Get_Student_Yearlevel()
         break;
     default:
         cout << "NO OPTION, TRY AGAIN\n";
-        Get_Student_Yearlevel();
+        Input_student_with_book_data::Get_Student_Yearlevel();
         break;
     }
 }
@@ -119,7 +127,7 @@ void Input_student_with_book_data::Get_Student_Course()
             break;
         default:
             cout << "NO OPTION, TRY AGAIN\n";
-            Get_Student_Course();
+            Input_student_with_book_data::Get_Student_Course();
             break;
     }
 }
@@ -146,27 +154,34 @@ void Input_student_with_book_data::Get_BookCategory()
             break;
         default:
             cout << "NO OPTION, TRY AGAIN\n";
-            Get_BookCategory();
+            Input_student_with_book_data::Get_BookCategory();
             break;
     }
 }
 void Input_student_with_book_data::Get_Book() 
 {
     Clear_screen();
-    string Temp_Book_Pointer;
+    ifstream Book_List("booklist.data");
     cout << "ENTER BOOK NUMBER: ";
     cin >> Temp_Book_Pointer;
-
-    ifstream Book_List("booklist.data");
     Book_List.open("booklist.data");
-
     if (!Book_List.is_open()) 
     {
         cout << "Book List Database Not Found";
         cout << endl; system("pause");
-
     } else if (Book_List.is_open()) {
-         while(getline(Book_List, Line_from_data)) 
+
+        cout << "Book List Found";
+        cout << endl; system("pause");
+        get_book_data_from_list();
+        
+    }
+}
+
+void Input_student_with_book_data::get_book_data_from_list() {
+
+    ifstream Book_List("booklist.data");
+    while(getline(Book_List, Line_from_data)) 
         {
             string  Book_Number_Code, 
                     Book_Name_from_Database,
@@ -180,46 +195,19 @@ void Input_student_with_book_data::Get_Book()
                 Borrowed_BookName = Book_Name_from_Database;
                 Borrowed_BookAuthor = Book_Author_from_Database;
                 Borrowed_BookDate = Book_Date_from_Database; 
-                string Confirmation;
-                int Lever;
-                cout << "BOOK NAME: " << Borrowed_BookName << endl;
-                cout << "BOOK AUTHOR: " << Borrowed_BookAuthor << endl;
-                cout << "DATE OF RELEASE: " << Borrowed_BookDate << endl;
-                while (Lever != 0) 
-                {
-                    cout << "Is this the right book? (Y/n): "; cin >> Confirmation;
-                    if (Confirmation == "Y") 
-                    { 
-                        Lever == 1;
-                        Get_Date_and_Deadline_of_Borrow();  
-
-                    }
-                    else if (Confirmation == "n") 
-                    {
-                        Get_Book();
-                    }
-                    else 
-                    {
-                        cout << "\nNo options! Try Again";
-                    }
-                }
-                
-                
+                Input_student_with_book_data::Get_Date_and_Deadline_of_Borrow();   
             } 
-            else if (Temp_Book_Pointer != Book_Number_Code)
+            else if
             {
                 Clear_screen();
-                cout << "BOOK NAME: " << Borrowed_BookName << endl;
-                cout << "BOOK AUTHOR: " << Borrowed_BookAuthor << endl;
-                cout << "DATE OF RELEASE: " << Borrowed_BookDate << endl;
                 print("NO BOOK FOR CODE " + Temp_Book_Pointer + " IS FOUND..", color_white, color_red);
                 FAILSOUND();
                 cout << endl; system("PAUSE");
-                Get_Book();
+                Input_student_with_book_data::Get_Book();
             }
         }
-    }
 }
+
 void Input_student_with_book_data::Check_if_Information_is_right() 
 {
     Clear_screen();
@@ -242,7 +230,7 @@ void Input_student_with_book_data::Check_if_Information_is_right()
     
     if (User_Input_choice_string == "Y") 
     {
-        Insert_Data_to_Database();
+        Input_student_with_book_data::Insert_Data_to_Database();
     } 
     else 
     {
@@ -263,7 +251,7 @@ void Input_student_with_book_data::Get_Date_and_Deadline_of_Borrow()
     cin >> Month_Deadline;
     cout << "Enter Day: "; 
     cin >> Day_Deadline;
-    Check_if_Information_is_right();
+    Input_student_with_book_data::Check_if_Information_is_right();
 }
 void Input_student_with_book_data::Insert_Data_to_Database() 
 {   
