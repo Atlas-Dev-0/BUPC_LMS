@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Acer/Desktop/GithubRepos/BUPC_LMS",
-      "program": "c:/Users/Acer/Desktop/GithubRepos/BUPC_LMS/build/Debug/outDebug",
+      "cwd": "c:/Users/Acer/Desktop/BUPC_LIBRARY_MANAGEMENT_SYSTEM_FINAL",
+      "program": "c:/Users/Acer/Desktop/BUPC_LIBRARY_MANAGEMENT_SYSTEM_FINAL/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
