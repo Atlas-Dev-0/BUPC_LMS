@@ -23,6 +23,7 @@ struct Login_Menu_Class {
     void User_Login();
     void Registration_Form();
     void Forgot_Password_Form();
+    void Password_Recovery();
 };
 
 struct Book_Transaction 
@@ -61,6 +62,17 @@ struct Book_Transaction
         int check_if_UNIQUE_ID_EXIST(string Unique_ID);
 };
 
+
+class Password_Recover {
+        public:
+                string REGISTERED_ID_FROM_DATABASE;
+                string PASSWORD_FROM_REG_ID_IN_DATABASE;
+                Password_Recover (string &REGISTERED_ID_FROM_DATABASE, string &PASSWORD_FROM_REG_ID_IN_DATABASE) {
+                        this->PASSWORD_FROM_REG_ID_IN_DATABASE = PASSWORD_FROM_REG_ID_IN_DATABASE;
+                        this->REGISTERED_ID_FROM_DATABASE = REGISTERED_ID_FROM_DATABASE;
+                }
+
+};
 
 
 void Login_Menu_Class::Login_Menu() {
@@ -324,6 +336,7 @@ void Login_Menu_Class::Registration_Form() {
 }
 void Login_Menu_Class::Forgot_Password_Form()
 {
+        Login_Menu_Class Login_Menu_Class;
 	system("cls");
 	print("\n\n\n\t\t\tPASSWORD RECOVERY\n\n", color_black, color_blue);
 	print("\t\t\t[1]", color_black, color_cyan); 
@@ -342,45 +355,55 @@ void Login_Menu_Class::Forgot_Password_Form()
 		case INPUT1: 
 		{
 			CONFIRMSOUND();
-			string REGISTERED_ID_FROM_DATABASE, USERNAME_FROM_DATA_BASE, PASSWORD_FROM_DATABASE, AUTH_ID_FROM_USER;
-			system("cls");
-			print("Enter the authentication ID which you remembered: ", color_blue);
-			cin >> AUTH_ID_FROM_USER;
-
-			while (true)
-			{
-				ifstream Data_Pull("Include/data/AccountData.data");
-				Data_Pull >> USERNAME_FROM_DATA_BASE >> REGISTERED_ID_FROM_DATABASE >> PASSWORD_FROM_DATABASE;
-
-				if (REGISTERED_ID_FROM_DATABASE == AUTH_ID_FROM_USER)
-				{
-					GOODSOUND();
-					print("\n\n\n\t\t\tYour account is found! \n", color_black, color_green);
-					cout << "\n\t\t\tYour password is: " << PASSWORD_FROM_DATABASE << endl;
-					cout << "\t\t\t"; system("pause");
-					Data_Pull.close();
-					Forgot_Password_Form();
-				}
-				else 
-				{
-					FAILSOUND();
-					print("\n\n\n\t\t\tSorry your account is not found! \n", color_white, color_red);
-					cout << "\t\t\t"; system("pause");
-					Forgot_Password_Form();
-				}
-				break;
-			}	
+			Login_Menu_Class.Password_Recovery();
 			break;
 		}
 		case INPUT2:
 		{	
-			Login_Menu();
+			Login_Menu_Class.Login_Menu();
 		}
 		default: 
     		Forgot_Password_Form();
 	}
 }
 
+
+void Login_Menu_Class::Password_Recovery() {
+
+        string REGISTERED_ID_FROM_DATABASE, USERNAME_FROM_DATA_BASE, PASSWORD_FROM_DATABASE, AUTH_ID_FROM_USER;
+        Clear_screen();
+        print("Enter the authentication ID which you remembered: ", color_blue);
+        cin >> AUTH_ID_FROM_USER;
+        vector<Password_Recover> Registered_ID;
+        ifstream Account_Data("Include/data/AccountData.data");
+        string Data_line;
+        while (getline(Account_Data,Data_line))
+        {
+                istringstream Data_Pull(Data_line);
+                Data_Pull >> USERNAME_FROM_DATA_BASE >> REGISTERED_ID_FROM_DATABASE >> PASSWORD_FROM_DATABASE;
+                Password_Recover Data_Pulled(REGISTERED_ID_FROM_DATABASE, PASSWORD_FROM_DATABASE);
+                Registered_ID.push_back(Data_Pulled);
+        }	
+
+        for (Password_Recover i : Registered_ID) {
+                if (AUTH_ID_FROM_USER == i.REGISTERED_ID_FROM_DATABASE)
+                {
+                        GOODSOUND();
+                        print("\n\n\n\t\t\tYour account is found! \n", color_black, color_green);
+                        cout << "\n\t\t\tYour password is: " << i.PASSWORD_FROM_REG_ID_IN_DATABASE << endl;
+                        cout << "\t\t\t"; system("pause");
+                        Account_Data.close();
+                        Forgot_Password_Form();
+                        Registered_ID.clear();
+                }
+                else { }
+        } 
+        FAILSOUND();
+        print("\n\n\n\t\t\tSorry your account is not found! \n", color_white, color_red);
+        cout << "\t\t\t"; system("pause");
+        Forgot_Password_Form();
+        Registered_ID.clear();
+}
 //----------------------------------------MENU----------------------------------------
 
 void Book_Transaction::Menu()     
@@ -668,11 +691,9 @@ void Book_Transaction::Get_Book_Details()
     string Temp_Book_Pointer;
     print("\n\nBOOK NUMBER: ", color_black, color_green);
     cin >> Temp_Book_Pointer;
-
-    if (Student_ID == "exit") {
+    if (Temp_Book_Pointer == "exit") {
         Menu();
     }
-
     while(getline(Book_List, Line_from_data)) 
     {
         string  Book_Number_Code, 
@@ -847,7 +868,6 @@ void Book_Transaction::Delete_Student() {
 
         }
 }
-
 int Book_Transaction::check_if_UNIQUE_ID_EXIST(string Inputted_Unique_ID) {
 
         string database_line;
