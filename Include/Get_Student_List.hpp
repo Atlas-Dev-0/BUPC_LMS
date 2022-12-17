@@ -133,6 +133,7 @@ void ListStudents(int sorting_mode)
             string Unique_ID;
             istringstream Data_Pull(database_line);
             
+            
             // Extract the data for each book from the database line
             Data_Pull >> Student_FirstName >> Student_LastName >> Student_ID >> Student_YearLevel >> Book_Category
             >> Bookname >> BookAuthor >> month_borrowed >> day_borrowed >> year_borrowed >> month_deadline >> day_deadline >> year_deadline >> Unique_ID;

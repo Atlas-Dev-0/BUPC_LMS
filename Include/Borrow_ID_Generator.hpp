@@ -24,7 +24,6 @@ string generateRandomID()
         // Convert the number to a character and add it to the ID
         id += (char)(randNum + 'A');
     }
-
     // Return the generated ID
     return id;
 }

@@ -75,7 +75,6 @@ void LOGIN_DIALOGUE_FIRST() {
         cout << "\t\t\t| [ ] EXIT                                |" << endl;
         cout << "\t\t\t|_________________________________________|\n";
         cout << endl;
-
 }
 void LOGIN_DIALOGUE_SECOND() {
 

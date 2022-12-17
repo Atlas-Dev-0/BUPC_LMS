@@ -92,7 +92,7 @@ void Delete_Student_by_ID(string UNIQUE_ID) {
         string Book_Date_of_Borrow;
         string Book_Deadline_of_Borrow;
         string Unique_ID;
-
+        
         // Parse line from database into individual data values
         istringstream Data_Pull(database_line);
         Data_Pull >> Student_FirstName >> Student_LastName >> Student_ID >> Student_YearLevel >> Book_Category

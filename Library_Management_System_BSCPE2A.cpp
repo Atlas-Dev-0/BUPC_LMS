@@ -976,7 +976,7 @@ void Book_Transaction::Get_Student_List() {
                 } else {
                         print("\nNO OPTION! please try again\n", color_red); 
                 }
-                }
+            }
         }else if (sorting_mode == "2") {
                 Delete_Student();
         } else if (sorting_mode == "3") {

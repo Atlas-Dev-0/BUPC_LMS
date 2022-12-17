@@ -47,7 +47,6 @@ void Most_RecommendedBooks() {
             counts.push_back({s, 1});
         }
     }
-    
     // Sort the vector of pairs in descending order according to their counts
     sort(counts.begin(), counts.end(),[](const auto& a, const auto& b) { return a.second > b.second; });
 

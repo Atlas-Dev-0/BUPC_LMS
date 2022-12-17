@@ -27,6 +27,7 @@ using namespace std;
 
 string get_textcolor_code(const int textcolor) { // Linux only
     switch(textcolor) {
+        
         case  0: return "30"; // color_black      0
         case  1: return "34"; // color_dark_blue  1
         case  2: return "32"; // color_dark_green 2
