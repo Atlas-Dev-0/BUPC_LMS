@@ -297,14 +297,14 @@ void Login_Menu_Class::Registration_Form() {
         //The function first prompts the user for a username, authentication ID, and password. 
         cout << "\t\t\t Enter the username : ";
         cin >> Input_from_user;
-        if (Input_from_user == "exit") {
+        if (Input_from_user == "exit" || Input_from_user == "back") {
                 Login_Menu();
         }
         Input_Vector.push_back(Input_from_user);
 
         cout << "\t\t\t Enter the authentication ID : ";
         cin >> Input_from_user;
-        if (Input_from_user == "exit") {
+        if (Input_from_user == "exit" || Input_from_user == "back" ) {
                 Login_Menu();
         }
         Input_Vector.push_back(Input_from_user);
@@ -331,7 +331,7 @@ void Login_Menu_Class::Registration_Form() {
         }
         cout << "\t\t\t Enter the password : ";
         cin >> Input_from_user;
-        if (Input_from_user == "exit") {
+        if (Input_from_user == "exit" || Input_from_user == "back") {
                 Login_Menu();
         }
         Input_Vector.push_back(Input_from_user);
@@ -340,7 +340,7 @@ void Login_Menu_Class::Registration_Form() {
         //The function will also return to the login menu if the user inputs "exit" or "back" at any point.
         cout << "\t\t\t Re-type the password : ";
         cin >> Input_from_user;
-        if (Input_from_user == "exit") {
+        if (Input_from_user == "exit" || Input_from_user == "back") {
                 Login_Menu();
         }
         Input_Vector.push_back(Input_from_user);
