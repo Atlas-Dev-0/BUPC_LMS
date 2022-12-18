@@ -14,7 +14,7 @@ This is the Login Menu, the blue line is for navigation, the user will need to u
 
 ![LOGIN MENU](https://user-images.githubusercontent.com/91697238/208309119-66678ec1-e2e2-4a12-81d3-ccc9b83c67ad.png)
 
-# BUPC LibMS | MAIN MENU
+# MAIN MENU
 This is the Main Menu which serves as the main user interface where the user (preferrably a teacher) will be able to add books, see the books borrowed, scrape through the list of books inside the database, and see the top recommended books based on its usage count. This is where most of the works is done, and like the login menu, you can navigate through it using the arrow keys.
 
 ![MAIN MENU](https://user-images.githubusercontent.com/91697238/208309258-b1846d1d-cb5b-4674-900e-6812a8957f28.png)
