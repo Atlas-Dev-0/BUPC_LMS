@@ -9,7 +9,7 @@ Library Management System is a basic C++ program was created by Computer Enginee
  - Show the list of books depending on the Category
 
 
-# LOG IN MENU
+# BUPC LibMS | LOG IN MENU
 This is the Login Menu, the blue line is for navigation, the user will need to use the arrow keys to move across the menu.
 
 ![LOGIN MENU](https://user-images.githubusercontent.com/91697238/208309119-66678ec1-e2e2-4a12-81d3-ccc9b83c67ad.png)
@@ -20,7 +20,7 @@ This is the Main Menu which serves as the main user interface where the user (pr
 ![MAIN MENU](https://user-images.githubusercontent.com/91697238/208309258-b1846d1d-cb5b-4674-900e-6812a8957f28.png)
 
 
-# What this Project is all about
+# BUPC LibMS | What this Project is all about
 
 This project is about organizing library data and the list of books borrowed by the BUPC Engineering students. This
 is in order to monitor the transactions taking place within the library. The features of the system are the following: it
@@ -36,7 +36,7 @@ itself requires such program, the vectors are dynamic which are applicable to th
 we focus more on using vectors arrays, it is because of its flexibility and efficiency over handling the data given to it.
 
 
-# Methodology
+# BUPC LibMS | Methodology
 
 The whole class conducted a meeting before anything else, to discuss the idea of the project that will be pursued
 as the topic for the final program. Once the idea was finalized, the class was divided into groups and each group was
@@ -50,7 +50,7 @@ statements, included algo, and header files. For color features we used coloring
 used windows.h headers. Some of the codes were taken from the internet but these codes were only used for
 formality and aesthetic purposes.
 
-# Conclusion
+# BUPC LibMS | Conclusion
 
 ***How can Data Structure and Algorithm help you in your future projects?***
 
