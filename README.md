@@ -1,5 +1,5 @@
 # BUPC LibMS | Library Management System
-Library Management System is a basic C++ program taht was created by Computer Engineering Students at Bicol University Polangui Campus for a project in Data Structure and Algorithm Subject. It is a basic Library Managing Console Program that lets you add a borrowed book and list it inside its database. 
+Library Management System is a basic C++ program that was created by Computer Engineering Students at Bicol University Polangui Campus for a project in Data Structure and Algorithm Subject. It is a basic Library Managing Console Program that lets you add a borrowed book and list it inside its database. 
 
 ***Features:*** 
  - Add Students that Borrowed Books
